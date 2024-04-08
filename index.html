@@ -28,8 +28,12 @@
 <body>
 
     <div id="root">
-
-        
+        <ul>
+            <li v-for="item in shopList" v-text="item"></li>
+            <!-- OR <li v-for="item in shopList">{{item}}</li> -->
+        </ul>
+        <input id="inputItem" type="text">
+        <button id="btn">Add item</button>
 
     </div>
 
@@ -39,9 +43,18 @@
             el: '#root',
 
             data: {
-                
+                shopList: ['Salad', 'Eggs', 'Apples', 'Chicken']
             }
         })
+
+        //Create event listener for button using vanilla JS
+        document.querySelector('#btn').addEventListener('click', () => {
+            let item = document.querySelector('#inputItem').value;
+            app.shopList.push(item);
+
+            //Clear text in text box
+            item.value = ' ';
+        });
     </script>
     
 </body>
